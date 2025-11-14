@@ -1,21 +1,22 @@
-import accountRequestBody from '../../data/user/create_account.json' assert { type: 'json' }
+import accountRequestBody from '../../data/user/create_account.json' with { type: 'json' }
+import accountLogInBody from '../../data/user/log_in_user.json' with { type: 'json' }
 import { config } from '../../../config.js'
-import { generateRandomEmail } from '../helpers.js'
+import { generateRandomEmail, generateRandomPassword } from '../helpers.js'
 
 export async function getCreateUserRequestBody() {
-    accountRequestBody.name = config[global.env].username
-    accountRequestBody.status = config[global.env].status
-    accountRequestBody.gender = config[global.env].gender
     accountRequestBody.email = await generateRandomEmail()
+    accountRequestBody.name = config[global.env].name
+    accountRequestBody.surname = config[global.env].surname
+    let password = await generateRandomPassword();
+    accountRequestBody.password = password
+    global.executionVariables.userPassword = password;
     
     return accountRequestBody
 }
 
-export async function getUpdateUserRequestBody() {
-    accountRequestBody.name = `${config[global.env].username}Updated`
-    accountRequestBody.status = config[global.env].status
-    accountRequestBody.gender = config[global.env].gender
-    accountRequestBody.email = await generateRandomEmail()
+export async function getLogInUserRequestBody() {
+    accountLogInBody.email = global.executionVariables.userEmail
+    accountLogInBody.password = global.executionVariables.userPassword
     
     return accountRequestBody
 }

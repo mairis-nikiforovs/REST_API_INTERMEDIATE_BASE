@@ -1,31 +1,88 @@
-## Tech Stack
+## EDIT CONFIG.JSON to the new API values
+// add endpoint without ending slash
+// add the xApiKey param
+## comment out unneeded steps from the scenario
+## Edit the register user method
+// change endpoint to user
+// check what object we need to send
+## Update the json schema object
+## Update the generate request body method
+## update the config file with name/surname/password
+## update the request method to contain the x-api-key header
+## update the expected status code for the request
 
-**Libraries:** chai, mocha, supertest, get-nested-value, mochawesome
+## Mocha -test librabry
+## Mochawsome - reporting
+## Supertest - for executing HTTP Requests
+## Chai - assertions
+## Get-nested-values - to extract values from nested json objects
 
-**Requirements:** Node (min version 14)
+
+## JS Examples
+// Variables / types
+let myName = "mairis"
+console.log(myName)
+myName = "new name"
+console.log(myName)
+console.log("current value is: " + myName)
+console.log(`current value is: ${myName}`)
+myName = true
+console.log(myName)
+console.log(typeof myName)
+
+//arrays/objects
+let myArr = [1, 2, 3, 4]
+console.log(myArr)
+console.log(myArr[3])
+let myObj = {name: "Mairis", age: 27, location: "Riga"}
+console.log(myObj)
+console.log(myObj.name)
+console.log(myObj['location'])
+
+// Comparison
+let comparisonResult;
+if(4+7 > 10){ // mby add logical comparisols also, like || and &&
+  comparisonResult = true
+} else {
+  comparisonResult = false
+}
+console.log(comparisonResult)
+
+let comparisonResult2 = 4+7>10 ? true : false;
+console.log(comparisonResult2)
+
+console.log(2 == '2')
+console.log(2 === '2')
 
 
-## Installation
+// Loops
+for (let i=0; i<2; i++){
+  console.log("still for-looping")
+}
 
-Install with npm
+let j=0;
+while (j < 2) {
+  console.log("still while-looping");
+  j++;
+}
 
-```bash
-  npm install
-```
-    
-## Running Tests
 
-To run tests, run the following command
+// Functions
+function myFunction(){
+  return "This is my regular function"
+}
+console.log(myFunction())
 
-```bash
-  npm run $testSetName $env
-```
-$testSetName - mandatory param, test set name. List of the supported test sets:
- - user
- - user-negative
+let arrowFunction = () => {
+  return "This is my arrow function"
+}
+console.log(arrowFunction())
 
-$env - environment 
- - STG
- - PROD
+// Error handling
+try {
+   nonExistentFunction();
+} catch (error){
+  console.log("Error handled here")
+  console.log(error.message)
+}
 
-#### Execution report can be find at /mochawesome-report/mochawesome.html
